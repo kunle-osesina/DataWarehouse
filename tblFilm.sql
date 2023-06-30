@@ -1,0 +1,22 @@
+﻿CREATE TABLE [dbo].[tblFilm](
+	[FilmID] [int] NOT NULL,
+	[FilmName] [nvarchar](255) NULL,
+	[FilmReleaseDate] [datetime] NULL,
+	[FilmDirectorID] [int] NULL,
+	[FilmLanguageID] [int] NULL,
+	[FilmCountryID] [int] NULL,
+	[FilmStudioID] [int] NULL,
+	[FilmSynopsis] [nvarchar](max) NULL,
+	[FilmRunTimeMinutes] [int] NULL,
+	[FilmCertificateID] [bigint] NULL,
+	[FilmBudgetDollars] [int] NULL,
+	[FilmBoxOfficeDollars] [int] NULL,
+	[FilmOscarNominations] [int] NULL,
+	[FilmOscarWins] [int] NULL,
+ CONSTRAINT [PK_tblFilm] PRIMARY KEY CLUSTERED ([FilmID]) ,
+ CONSTRAINT [FK_tblFilm_tblCertificate] FOREIGN KEY([FilmCertificateID]) REFERENCES [dbo].[tblCertificate] ([CertificateID]) on delete cascade on update cascade,
+ CONSTRAINT [FK_tblFilm_tblCountry] FOREIGN KEY([FilmCountryID]) REFERENCES [dbo].[tblCountry] ([CountryID]) on delete cascade on update cascade,
+ CONSTRAINT [FK_tblFilm_tblDirector] FOREIGN KEY([FilmDirectorID]) REFERENCES [dbo].[tblDirector] ([DirectorID]) on delete cascade on update cascade,
+ CONSTRAINT [FK_tblFilm_tblLanguage] FOREIGN KEY([FilmLanguageID]) REFERENCES [dbo].[tblLanguage] ([LanguageID]) on delete cascade on update cascade,
+ CONSTRAINT [FK_tblFilm_tblStudio1] FOREIGN KEY([FilmStudioID]) REFERENCES [dbo].[tblStudio] ([StudioID]) on delete cascade on update cascade
+ )
